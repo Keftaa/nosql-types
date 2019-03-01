@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Keftaa/nosql-types/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+## Introduction
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Il s'agit d'une introduction aux différents types de bases de données non-relationnelles. L'objectif de cet article est d'expliquer concrètement, pratiquement et sans prise de tête, pour chacun des types :
+* Sa structure générale.
+* Ses cas d'utilisation.
+* Une introduction au plus populaire de ses outils.
 
-### Markdown
+Cet article présume une connaissance générale des bases de données relationnelles (RDBMS) et bien évidemment du langage SQL.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Les types de bases de données non-relationnelles
 
-```markdown
-Syntax highlighted code block
+De base, il existe 4 types de bases de données NoSQL :
+1. Magasin clé-valeur : la plus simple des versions de NoSQL. Elle consiste d'un mapping de la clé à la valeur.
 
-# Header 1
-## Header 2
-### Header 3
+2. Magasin à colonnes larges : permet de stocker des données en colonnes au lieu de lignes.
 
-- Bulleted
-- List
+3. Bases de données en document : une structure de base de données NoSQL très similaire au format JSON.
 
-1. Numbered
-2. List
+4. Bases de données graphiques : utilise les structures de graphes pour les requêtes sémantiques avec des nœuds, des arêtes et des propriétés pour représenter et stocker des données.
 
-**Bold** and _Italic_ and `Code` text
+## Premier type : clé-valeur
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Keftaa/nosql-types/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
