@@ -32,3 +32,29 @@ Redis est aussi très utile en cas de messagerie instantanée pour les mêmes ra
 
 ## Deuxième type : colonnes larges
 
+### SGBD le plus populaire 
+Le plus populaire des systèmes de gestion de bases de donnée non-relationnelles colonnes larges est Apache Cassandra. J'utiliserai "Cassandra" et "BDD colonnes larges" de façon interchangeable.
+
+## Pourquoi colonnes larges ?
+Cette architecture est utile pour du "Big Data". Par cela, on entend des données massives arrivant à vitesses très rapides; Des données variés, tantôt structurés, tantôt sans structure; un volume très important en téraoctets et pétaoctets de données.
+
+### "Oui" à Cassandra
+Si vous comptez distribuer vos données sur des "data centers" multiples, puisque Cassandra utilise une architecture pair-à-pair lui permettant de répliquer et distribuer des données sur différents noeuds. Cassandra est adapté pour les applications critiques qui ne supportent pas du temps d'arrêt; les données sont stockés sur plusieurs noeuds dans différents "data centers", donc si jamais un "data center" tombe en panne, Cassanda n'aura pas de problèmes.
+
+
+### "Non" à Cassandra
+- Si vos [b]données sont fortement relationnelles[/b] et que vous voulez que vos transactions soient atomiques, cohérentes, isolées et durables (ACID), Cassandra n'est pas le bon choix. Dans MySQL, soit une transaction marche, soit elle ne marche pas. Sur Cassandra, vous pourriez tomber sur des cas où des transactions sont partiellement réussies. C'est pour cela que les systèmes dépendant de la propriété ACID ne doivent pas utiliser Cassandra. 
+
+- Si vous vous attendez à faire beaucoup de mises à jour et de suppression de données. Cassandra est très rapide pour écrire des données massives, mais cela vient au détriment des opérations de suppression, de mise à jour et de lecture.
+Pour chaque opération "UPDATE", Cassandra ne modifie pas la donnée existante, mais ajoute une nouvelle version plus récente. 
+Ceci est pénalisant pour les operations le lecture qui tomberont sur des réplications de données pas très utiles.
+Il s'agit de même pour les suppressions : Cassandra ne supprime pas les données mais les marque comme "mortes"; une lecture retrourera donc beaucoup de données mortes si vous supprimez beaucoup.
+Eventuellement, Cassandra supprime complètement les données mortes. Mais cela arrive eventuellement, et non pas instantanément !
+
+## Cas d'utilisation
+La manière dont le modèle de données de Cassandra est organisé et le fait que Cassandra soit conçue pour des charges de travail d’écriture intensives le rendent exceptionnellement bon pour les données de capteur. Cela convient à des industries complètement différentes, que ce soit la fabrication, la logistique, la santé, l’immobilier, la production d’énergie, l’agriculture ou autre. Quels que soient les types de capteurs, Cassandra gère correctement le flux de données entrantes et offre des possibilités d'analyse plus poussée des données.
+
+Bien que Cassandra ne fonctionne pas bien avec les transferts entre comptes bancaires et s’entend mal avec les transactions ACID, les banques peuvent toujours en bénéficier. Leurs solutions Big Data conçues pour analyser les données client peuvent fournir un niveau de sécurité supplémentaire à leurs clients en permettant la détection des fraudes. Cassandra le fait à merveille, compte tenu de sa grande vitesse et de la prise en charge de l'analyse en temps réel grâce à une intégration transparente avec Apache Spark.
+
+
+
