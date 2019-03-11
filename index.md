@@ -56,6 +56,26 @@ La manière dont le modèle de données de Cassandra est organisé et le fait qu
 
 Bien que Cassandra ne fonctionne pas bien avec les transferts entre comptes bancaires et s’entend mal avec les transactions ACID, les banques peuvent toujours en bénéficier. Leurs solutions Big Data conçues pour analyser les données client peuvent fournir un niveau de sécurité supplémentaire à leurs clients en permettant la détection des fraudes. Cassandra le fait à merveille, compte tenu de sa grande vitesse et de la prise en charge de l'analyse en temps réel grâce à une intégration transparente avec Apache Spark.
 
+### Exemples CQL
+#### Inserts vs Updates
+Le concept d'écriture rapide s'étend à la mise à jour des données. En effet, contrairement à SQL, une lecture n’est pas effectuée lors de la mise à jour. La syntaxe est la même en CQL et SQL.
+```
+/* Mise à jour */
+UPDATE myTable SET myField = 2 WHERE id = 6;
+```
+Cependant, si la ligne n'existe pas, elle sera créée ! CQL n’effectue pas de lecture lors de l’insertion. Sans lecture, il est impossible de savoir si les données insérées remplacent un enregistrement existant. Cela signifie que les insertions et les mises à jour sont extrêmement rapides.
+
+#### Time to Live
+CQL vous permet de définir une durée de vie sur une ligne. Cela signifie que vous pouvez définir une ligne pour qu'elle expire 24 heures après sa création (par titre d'exemple). Ceci est accompli avec la commande USING TTL (les valeurs sont en secondes).
+```
+/* Expiration dans 24 heures */
+INSERT INTO myTable (id, myField) VALUES (2, 9) USING TTL 86400;
+```
+Mais attention ... !
+
+#### Supressions
+L'exécution d'un DELETE dans CQL ne supprime pas réellement les données, mais les marquent plutôt comme supprimés. La supression réelle se fera durant le processus de compactage. Pour plus d'information sur le compactage, consultez l'article suivant: https://docs.datastax.com/en/archived/cassandra/2.0/cassandra/dml/dml_write_path_c.html
+
 ## Troisième type : documents
 
 ### SGBD le plus populaire
