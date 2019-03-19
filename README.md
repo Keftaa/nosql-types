@@ -5,4 +5,6 @@ Ce dépôt (repository) contient un article / tutoriel contenant les différents
 La page écrite (index.md) s'intéresse à présenter les différents types tandis que le Google Slides que j'ai présenté en classe ajoute une comparaison et une introduction à la notion CAP.
 https://drive.google.com/open?id=1BqNLiJBBBxfaSv-2LkYwSnOb8JYH10_WBReQasdu_1Y
 
+Si vous êtes intéréssés par la bibliographie que j'ai utilisé dans ma présentation, contactez moi via adnan.hamzeh@isae.edu.lb
+
 Lien privé vers le Classroom pour les auditeurs CNAM Liban: https://classroom.google.com/u/1/c/MTg0OTkwNzYwMDFa/a/Mjg5MTg5NDEzMjVa/details
